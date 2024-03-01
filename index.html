@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
+<body>
+
+    <style>
+       #movieList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .movieCard {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+        .movies{
+            width: 30%;
+        }
+
+        h2{
+            color: red;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+        }
+    
+    </style>
+
+    
+<div>
+    <label for="searchInput">Search for a Movie:</label>
+    <input type="text" id="searchInput" oninput="searchMovies()">
+    <button onclick="searchmovies()">Movie List</button>
+</div>
+
+<div id="movieList"></div>
+<button onclick="movies()">Movie List</button>
+    
+<h2>Movie Name:</h2>
+   <div id="display">
+   </div>
+
+  
+
+    <script>
+
+function movies(){
+        const movies = [
+  { name: "inception", length: "148 minutes", rating: "8.8", platform: "netflix", budget: "$160 million" },
+  { name: "interstellar", length: "169 minutes", rating: "8.6", platform: "amazon prime", budget: "$165 million" },
+  { name: "the dark knight", length: "152 minutes", rating: "9.0", platform: "hbo max", budget: "$185 million" },
+  { name: "pulp fiction", length: "154 minutes", rating: "8.9", platform: "hulu", budget: "$8.5 million" },
+  { name: "fight club", length: "139 minutes", rating: "8.8", platform: "netflix", budget: "$63 million" },
+  { name: "the shawshank redemption", length: "142 minutes", rating: "9.3", platform: "amazon prime", budget: "$25 million" },
+  { name: "forrest gump", length: "142 minutes", rating: "8.8", platform: "hbo max", budget: "$55 million" },
+  { name: "the matrix", length: "136 minutes", rating: "8.7", platform: "netflix", budget: "$63 million" },
+  { name: "goodfellas", length: "148 minutes", rating: "8.7", platform: "hulu", budget: "$25 million" },
+  { name: "schindler's list", length: "195 minutes", rating: "8.9", platform: "amazon prime", budget: "$22 million" },
+  { name: "the godfather", length: "175 minutes", rating: "9.2", platform: "hbo max", budget: "$6 million" },
+  { name: "pulp fiction", length: "154 minutes", rating: "8.9", platform: "hulu", budget: "$8.5 million" },
+  { name: "the lord of the rings: the fellowship of the ring", length: "178 minutes", rating: "8.8", platform: "netflix", budget: "$93 million" },
+  { name: "the silence of the lambs", length: "118 minutes", rating: "8.6", platform: "amazon prime", budget: "$19 million" },
+  { name: "gladiator", length: "155 minutes", rating: "8.5", platform: "hbo max", budget: "$103 million" },
+  { name: "saving private ryan", length: "169 minutes", rating: "8.6", platform: "netflix", budget: "$70 million" },
+  { name: "back to the future", length: "116 minutes", rating: "8.5", platform: "hulu", budget: "$19 million" },
+  { name: "the green mile", length: "189 minutes", rating: "8.6", platform: "amazon prime", budget: "$60 million" },
+  { name: "the departed", length: "151 minutes", rating: "8.5", platform: "hbo max", budget: "$90 million" },
+  { name: "the prestige", length: "130 minutes", rating: "8.5", platform: "netflix", budget: "$40 million" },
+  { name: "american history x", length: "119 minutes", rating: "8.5", platform: "hulu", budget: "$20 million" }
+];
+
+
+       const move = movies.map(function(movie){
+    return   `<div class="movies"> 
+        <h2> ${movie.name}  </h2>
+<h3> ${movie.length}  </h3>
+<h3> ${movie.rating}  </h3>
+<h3> ${movie.platform}  </h3>
+<h3> ${movie.budget}  </h3> 
+       
+        </div>` 
+})
+
+  const mlist = move.join("");
+
+  const mylist = document.getElementById('movieList')
+
+  mylist.innerHTML = mlist;
+      }
+
+      function searchMovies(){
+        const movies = [
+  { name: "inception", length: "148 minutes", rating: "8.8", platform: "netflix", budget: "$160 million" },
+  { name: "interstellar", length: "169 minutes", rating: "8.6", platform: "amazon prime", budget: "$165 million" },
+  { name: "the dark knight", length: "152 minutes", rating: "9.0", platform: "hbo max", budget: "$185 million" },
+  { name: "pulp fiction", length: "154 minutes", rating: "8.9", platform: "hulu", budget: "$8.5 million" },
+  { name: "fight club", length: "139 minutes", rating: "8.8", platform: "netflix", budget: "$63 million" },
+  { name: "the shawshank redemption", length: "142 minutes", rating: "9.3", platform: "amazon prime", budget: "$25 million" },
+  { name: "forrest gump", length: "142 minutes", rating: "8.8", platform: "hbo max", budget: "$55 million" },
+  { name: "the matrix", length: "136 minutes", rating: "8.7", platform: "netflix", budget: "$63 million" },
+  { name: "goodfellas", length: "148 minutes", rating: "8.7", platform: "hulu", budget: "$25 million" },
+  { name: "schindler's list", length: "195 minutes", rating: "8.9", platform: "amazon prime", budget: "$22 million" },
+  { name: "the godfather", length: "175 minutes", rating: "9.2", platform: "hbo max", budget: "$6 million" },
+  { name: "pulp fiction", length: "154 minutes", rating: "8.9", platform: "hulu", budget: "$8.5 million" },
+  { name: "the lord of the rings: the fellowship of the ring", length: "178 minutes", rating: "8.8", platform: "netflix", budget: "$93 million" },
+  { name: "the silence of the lambs", length: "118 minutes", rating: "8.6", platform: "amazon prime", budget: "$19 million" },
+  { name: "gladiator", length: "155 minutes", rating: "8.5", platform: "hbo max", budget: "$103 million" },
+  { name: "saving private ryan", length: "169 minutes", rating: "8.6", platform: "netflix", budget: "$70 million" },
+  { name: "back to the future", length: "116 minutes", rating: "8.5", platform: "hulu", budget: "$19 million" },
+  { name: "the green mile", length: "189 minutes", rating: "8.6", platform: "amazon prime", budget: "$60 million" },
+  { name: "the departed", length: "151 minutes", rating: "8.5", platform: "hbo max", budget: "$90 million" },
+  { name: "the prestige", length: "130 minutes", rating: "8.5", platform: "netflix", budget: "$40 million" },
+  { name: "american history x", length: "119 minutes", rating: "8.5", platform: "hulu", budget: "$20 million" }
+];
+function searchmovie() {
+           
+            const movieName = document.getElementById("searchInput").value;
+
+       
+            const displayElement = document.getElementById("display");
+            displayElement.value = "Movie Name: " + movieName;
+        }
+}
+
+            
+
+    </script>
+</body>
+</html>
+
+
